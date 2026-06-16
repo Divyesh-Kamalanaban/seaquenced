@@ -60,5 +60,5 @@ if __name__ == '__main__':
     asv_data = generate_asv_data()
     print("Generated ASV dataset (first 5 rows):")
     print(asv_data.head())
-    asv_data.to_csv('synthetic_asv_data.csv', index=False)
+    asv_data.to_csv('datasets/synthetic_asv_data.csv', index=False)
     print("\nDataset saved to 'synthetic_asv_data.csv'")

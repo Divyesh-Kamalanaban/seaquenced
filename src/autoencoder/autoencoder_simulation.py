@@ -29,11 +29,11 @@ def simulate_autoencoder_output(asv_data, n_components=2, random_state=42):
 
 if __name__ == '__main__':
     # Assume generate_asv_data.py has been run and created 'synthetic_asv_data.csv'
-    asv_data = pd.read_csv('synthetic_asv_data.csv')
+    asv_data = pd.read_csv('datasets/synthetic_asv_data.csv')
     latent_space_data = simulate_autoencoder_output(asv_data)
 
     print("Simulated Autoencoder output (first 5 rows):")
     print(latent_space_data.head())
     
-    latent_space_data.to_csv('latent_space_data.csv', index=False)
+    latent_space_data.to_csv('datasets/latent_space_data.csv', index=False)
     print("\nLatent space data saved to 'latent_space_data.csv'")

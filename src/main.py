@@ -2,8 +2,8 @@ import os
 import pandas as pd
 import json
 # Ensure that generate_asv_data.py exists in the same directory or in your PYTHONPATH
-from src.generate_asv_data import generate_asv_data
-from src.autoencoder_simulation import simulate_autoencoder_output
+from src.data_generation.generate_asv_data import generate_asv_data
+from src.autoencoder.autoencoder_simulation import simulate_autoencoder_output
 from src.run_clustering import run_dbscan_clustering, generate_dendrogram
 from src.conceptual_transformer import run_conceptual_transformer
 
@@ -21,12 +21,12 @@ if __name__ == '__main__':
     # Step 1: Generate Synthetic ASV Data
     print("1. Generating synthetic ASV data...")
     asv_data = generate_asv_data()
-    asv_data.to_csv('synthetic_asv_data.csv', index=False)
+    asv_data.to_csv('datasets/synthetic_asv_data.csv', index=False)
     
     # Step 2: Simulate Autoencoder Output
     print("2. Simulating Autoencoder output...")
     latent_space_data = simulate_autoencoder_output(asv_data)
-    latent_space_data.to_csv('latent_space_data.csv', index=False)
+    latent_space_data.to_csv('datasets/latent_space_data.csv', index=False)
 
     # Step 3: Run Clustering (DBSCAN & Hierarchical)
     print("3. Running DBSCAN and generating visualizations...")
