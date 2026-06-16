@@ -2,10 +2,10 @@ import os
 import pandas as pd
 import json
 # Ensure that generate_asv_data.py exists in the same directory or in your PYTHONPATH
-from generate_asv_data import generate_asv_data
-from autoencoder_simulation import simulate_autoencoder_output
-from run_clustering import run_dbscan_clustering, generate_dendrogram
-from conceptual_transformer import run_conceptual_transformer
+from src.generate_asv_data import generate_asv_data
+from src.autoencoder_simulation import simulate_autoencoder_output
+from src.run_clustering import run_dbscan_clustering, generate_dendrogram
+from src.conceptual_transformer import run_conceptual_transformer
 
 def create_output_directory(dir_name='data_output'):
     if not os.path.exists(dir_name):
