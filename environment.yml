@@ -1,0 +1,4 @@
+name: seaquenced-venv
+channels:
+  - https://conda.anaconda.org/conda-forge
+prefix: /home/divyesh/.conda/envs/seaquenced-venv
