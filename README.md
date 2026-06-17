@@ -1,36 +1,184 @@
-### **Project Name: Sea-quenced 🌊**
+# Sea-quenced 🌊
 
-## **Project Overview**
+## AI-Powered eDNA Biodiversity Analysis and Novel Taxa Discovery
 
-The deep ocean holds a vast and largely undiscovered portion of global biodiversity. Traditional methods for studying it are slow, resource-intensive, and fail to identify new species. **Sea-quenced** is an AI-driven pipeline designed to overcome these challenges, providing a complete, end-to-end platform for identifying eukaryotic taxa and assessing biodiversity from environmental DNA (eDNA) datasets.
+### Project Overview
 
----
+The deep ocean contains one of the largest reservoirs of undiscovered biodiversity on Earth. Traditional biodiversity assessment methods rely heavily on reference databases and sequence alignment techniques, limiting their ability to identify previously uncharacterized organisms.
 
-## **Core Features & Innovation**
+Sea-quenced is an AI-driven bioinformatics pipeline designed to analyze environmental DNA (eDNA) datasets and perform comprehensive biodiversity assessment through a combination of supervised and unsupervised machine learning techniques.
 
-### **Hybrid AI Pipeline: The Core Innovation**
-Our core innovation is a hybrid approach that combines **deep learning** with **unsupervised learning**. Instead of relying on a single method, our pipeline uses multiple, purpose-built AI models that work in a sequence to deliver comprehensive results. 
-
-### **Unsupervised Discovery (Autoencoder + DBSCAN)**
-This is our most unique feature. A conceptual **Autoencoder** transforms raw DNA sequences into a low-dimensional "latent space." We then apply **DBSCAN** to this latent space to automatically cluster sequences. This enables the discovery and grouping of **novel taxa** that do not exist in any reference database—a task traditional methods cannot perform. This feature is crucial for true scientific discovery.
-
-### **Supervised Classification (CNN)**
-For the clusters of known species, a conceptual **Convolutional Neural Network (CNN)** model is used to perform high-resolution taxonomic classification. The CNN is trained on a labeled dataset to recognize specific genetic patterns, assigning a name and a confidence score to each identified species.
-
-### **Comprehensive Biodiversity Reports**
-The pipeline integrates the outputs from both the supervised and unsupervised stages to generate a full biodiversity report. This report not only lists known species but also prominently features the newly discovered taxa, along with ecological metrics and a visual dendrogram showing the relationships between them.
+Unlike conventional taxonomic workflows, Sea-quenced not only classifies known organisms but also identifies potentially novel taxa through latent-space representation learning and density-based clustering, enabling deeper exploration of underrepresented marine ecosystems.
 
 ---
 
-## **Future Scope & Viability**
+## Core Innovation
 
-**Sea-quenced** is designed to be a scalable and viable long-term solution.
+### Hybrid Learning Architecture
+<p align="center">
+<img src="docs/assets/seaquenced-architecture.png">
+</p>
 
-### **Seamless Transition to Real-World Data**
-Our prototype uses synthetic data, but the pipeline is built to be seamlessly integrated with real-world datasets from repositories like NCBI's SRA. This roadmap for real-world application shows the project's viability.
+Sea-quenced combines deep learning and unsupervised learning into a unified biodiversity analysis workflow.
 
-### **Advanced Model Integration**
-For a production-level version, we would replace the conceptual CNN with a pre-trained **Transformer model** like **DNABERT**. This would dramatically increase the model's performance and accuracy, as it can be fine-tuned with a small, specialized dataset without requiring extensive training from scratch.
+Rather than relying solely on reference-based classification, the pipeline leverages multiple specialized machine learning models that operate sequentially to provide both species identification and novel taxa discovery.
 
-### **Broader Impact**
-This project has the potential to become the de facto standard for deep-sea eDNA analysis, enabling faster scientific discovery and more informed conservation strategies. The ability to monitor biodiversity in real-time could be a game-changer for protecting our most vulnerable marine ecosystems. 
+This hybrid architecture enables:
+
+* Taxonomic classification of known organisms
+* Discovery of previously unseen sequence groups
+* Biodiversity characterization at scale
+* Reduced dependence on curated reference databases
+
+---
+
+## Pipeline Architecture
+
+### Stage 1 — Latent Representation Learning
+
+An Autoencoder is used to transform high-dimensional DNA sequence data into compact latent representations.
+
+The encoder learns biologically relevant features while reducing dimensionality, producing a latent space that captures meaningful relationships between sequences.
+
+Key benefits include:
+
+* Feature extraction
+* Noise reduction
+* Dimensionality reduction
+* Improved clustering performance
+
+---
+
+### Stage 2 — Novel Taxa Discovery (Autoencoder + DBSCAN)
+
+The latent representations generated by the Autoencoder are analyzed using Density-Based Spatial Clustering of Applications with Noise (DBSCAN).
+
+This stage represents the primary research contribution of the project.
+
+By clustering sequences in latent space rather than relying on predefined labels, Sea-quenced can:
+
+* Detect previously unseen sequence groups
+* Identify biologically distinct clusters
+* Discover candidate novel taxa
+* Recognize outlier organisms
+
+Unlike traditional taxonomic pipelines, this workflow is not restricted to species already present in reference databases.
+
+---
+
+### Stage 3 — Taxonomic Classification (CNN)
+
+For organisms represented in labeled training data, a Convolutional Neural Network (CNN) performs supervised taxonomic classification.
+
+The CNN learns sequence-level patterns and assigns:
+
+* Species labels
+* Confidence scores
+* Classification metadata
+
+This enables accurate identification of known taxa while complementing the unsupervised discovery workflow.
+
+---
+
+### Stage 4 — Biodiversity Reporting
+
+Outputs from both supervised and unsupervised stages are integrated into a unified biodiversity report.
+
+Generated analyses include:
+
+* Known species inventory
+* Novel taxa clusters
+* Relative abundance estimates
+* Community composition summaries
+* Diversity metrics
+* Hierarchical relationship visualizations
+
+This provides a comprehensive overview of ecosystem biodiversity from a single eDNA sample.
+
+---
+
+## Technical Stack
+
+### Machine Learning
+
+* PyTorch
+* Scikit-learn
+* NumPy
+* Pandas
+
+### Deep Learning Models
+
+* Autoencoder
+* Convolutional Neural Network (CNN)
+
+### Unsupervised Learning
+
+* DBSCAN
+* Latent-Space Clustering
+
+### Bioinformatics
+
+* eDNA Processing
+* Sequence Representation Learning
+* Taxonomic Classification
+* Biodiversity Analytics
+
+---
+
+## Future Roadmap
+
+### Real-World Dataset Integration
+
+The current implementation utilizes synthetic genomic datasets for rapid experimentation and validation.
+
+Future versions will support direct integration with real-world sequencing repositories, including:
+
+* NCBI Sequence Read Archive (SRA)
+* Public eDNA datasets
+* Marine biodiversity sequencing projects
+
+---
+
+### Genomic Foundation Models
+
+Future iterations of Sea-quenced will investigate replacing the current latent-space generation pipeline with transformer-based genomic foundation models, including:
+
+* DNABERT
+* Nucleotide Transformer
+* Large-scale biological language models
+
+These models have the potential to learn richer biological representations and improve both classification accuracy and novel taxa discovery performance.
+
+---
+
+### Efficient Foundation Model Deployment
+
+As part of this roadmap, a companion project explores efficient deployment of genomic foundation models through NF4 quantization.
+
+Related work:
+
+**Nucleotide Transformer Quantization Repository**
+https://github.com/Divyesh-Kamalanaban/nucleotide-transformer-quants
+
+**Quantized Nucleotide Transformer Model**
+https://huggingface.co/divyeshkamalanaban/nucleotide-transformer-2.5b-multi-species-NF4-Q4
+
+This work establishes a pathway for integrating large genomic transformers into Sea-quenced while maintaining practical hardware requirements.
+
+---
+
+## Impact and Applications
+
+Sea-quenced is designed as a scalable platform for biodiversity research and environmental monitoring.
+
+Potential applications include:
+
+* Marine biodiversity assessment
+* Deep-sea ecosystem exploration
+* Conservation biology
+* Environmental genomics
+* Species discovery
+* Ecological monitoring
+* Taxonomic research
+
+By combining supervised classification with unsupervised discovery, Sea-quenced provides a framework for moving beyond reference-based biodiversity analysis and toward automated discovery of previously unknown biological diversity.
