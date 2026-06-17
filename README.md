@@ -155,7 +155,7 @@ These models have the potential to learn richer biological representations and i
 
 As part of this roadmap, a companion project explores efficient deployment of genomic foundation models through NF4 quantization.
 
-Related work:
+#### Related work:
 
 **Nucleotide Transformer Quantization Repository**
 https://github.com/Divyesh-Kamalanaban/nucleotide-transformer-quants
